@@ -1,0 +1,49 @@
+{
+  "name": "nanovg-js",
+  "version": "1.0.0",
+  "description": "JavaScript bindings for NanoVG using Emscripten and TypeScript",
+  "main": "nanovg.js",
+  "types": "nanovg.ts",
+  "scripts": {
+    "build": "make build-bind-nanovg && npm run build-nanovg",
+    "clean": "make clean-bind-nanovg && npm run clean-nanovg",
+    "watch": "npm run watch-example",
+    "start": "npm run start-example",
+    "dist": "rollup -c",
+    "build-nanovg": "tsc",
+    "watch-nanovg": "tsc --watch",
+    "clean-nanovg": "echo TODO: clean-nanovg",
+    "build-example": "tsc -p example",
+    "watch-example": "tsc -p example --watch",
+    "clean-example": "echo TODO: clean-example",
+    "start-example": "npm run start-example-html",
+    "start-example-html": "echo http://localhost:8080/example/index.html && http-server -c-1 -o",
+    "start-example-node": "node example/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flyover/nanovg-js.git"
+  },
+  "author": "Isaac Burns <isaacburns@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flyover/nanovg-js/issues"
+  },
+  "homepage": "https://github.com/flyover/nanovg-js#readme",
+  "dependencies": {
+    "@types/emscripten": "0.0.31",
+    "@types/node": "^10.5.6",
+    "@types/systemjs": "^0.20.6"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "node-fetch": "^2.2.0",
+    "rollup": "^0.64.1",
+    "rollup-plugin-commonjs": "^9.1.5",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-typescript2": "^0.16.1",
+    "systemjs": "^0.21.4",
+    "typescript": "^3.0.1"
+  }
+}

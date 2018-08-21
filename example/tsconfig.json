@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "system",
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "nanovg-js": [ ".." ],
+      "nanovg-js/*": [ "../*" ]
+    }
+  },
+  "files": [
+    "example_webgl.ts",
+    "example_fbo.ts",
+    "demo.ts",
+    "perf.ts"
+  ]
+}

@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>NanoVG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script type="text/javascript" src="../node_modules/systemjs/dist/system.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.21.0/system.js"></script>
+    <script type="text/javascript" src="system.config.js"></script>
+    <script type="text/javascript">
+    SystemJS.import("./example_webgl")
+    .then(function (main) { main.default(); })
+    .catch(console.error);
+    </script>
+  </head>
+</html>
