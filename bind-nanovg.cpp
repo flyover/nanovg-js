@@ -1102,7 +1102,9 @@ EMSCRIPTEN_BINDINGS(NanoVG) {
   // Returns handle to the image.
   // int nvgCreateImageMem(NVGcontext* ctx, int imageFlags, unsigned char* data, int ndata);
   emscripten::function("nvgCreateImageMem", FUNCTION(int, (WrapNVGcontext* wrap, int imageFlags, emscripten::val data), {
-    std::vector<unsigned char> _data = emscripten::vecFromJSArray<unsigned char>(data);
+    std::vector<unsigned char> _data;
+    _data.resize(data["length"].as<size_t>());
+    emscripten::val(emscripten::typed_memory_view<unsigned char>(_data.size(), _data.data())).call<void>("set", data);
     return nvgCreateImageMem(wrap->ctx, imageFlags, _data.data(), _data.size());
   }), emscripten::allow_raw_pointers());
 
@@ -1110,14 +1112,18 @@ EMSCRIPTEN_BINDINGS(NanoVG) {
   // Returns handle to the image.
   // int nvgCreateImageRGBA(NVGcontext* ctx, int w, int h, int imageFlags, const unsigned char* data);
   emscripten::function("nvgCreateImageRGBA", FUNCTION(int, (WrapNVGcontext* wrap, int w, int h, int imageFlags, emscripten::val data), {
-    std::vector<unsigned char> _data = emscripten::vecFromJSArray<unsigned char>(data);
+    std::vector<unsigned char> _data;
+    _data.resize(data["length"].as<size_t>());
+    emscripten::val(emscripten::typed_memory_view<unsigned char>(_data.size(), _data.data())).call<void>("set", data);
     return nvgCreateImageRGBA(wrap->ctx, w, h, imageFlags, _data.data());
   }), emscripten::allow_raw_pointers());
 
   // Updates image data specified by image handle.
   // void nvgUpdateImage(NVGcontext* ctx, int image, const unsigned char* data);
   emscripten::function("nvgUpdateImage", FUNCTION(void, (WrapNVGcontext* wrap, int image, emscripten::val data), {
-    std::vector<unsigned char> _data = emscripten::vecFromJSArray<unsigned char>(data);
+    std::vector<unsigned char> _data;
+    _data.resize(data["length"].as<size_t>());
+    emscripten::val(emscripten::typed_memory_view<unsigned char>(_data.size(), _data.data())).call<void>("set", data);
     nvgUpdateImage(wrap->ctx, image, _data.data());
   }), emscripten::allow_raw_pointers());
 
@@ -1369,7 +1375,9 @@ EMSCRIPTEN_BINDINGS(NanoVG) {
   // Returns handle to the font.
   // int nvgCreateFontMem(NVGcontext* ctx, const char* name, unsigned char* data, int ndata, int freeData);
   emscripten::function("nvgCreateFontMem", FUNCTION(int, (WrapNVGcontext* wrap, std::string name, emscripten::val data), {
-    std::vector<unsigned char> _data = emscripten::vecFromJSArray<unsigned char>(data);
+    std::vector<unsigned char> _data;
+    _data.resize(data["length"].as<size_t>());
+    emscripten::val(emscripten::typed_memory_view<unsigned char>(_data.size(), _data.data())).call<void>("set", data);
     // return nvgCreateFontMem(wrap->ctx, name.c_str(), _data.data(), _data.size(), 0);
     unsigned char* __data = (unsigned char*) malloc(_data.size());
     memcpy(__data, _data.data(), _data.size());
