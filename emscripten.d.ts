@@ -1,11 +1,8 @@
-/// <reference types="emscripten" />
-
 export declare class EmscriptenClassHandle {
 }
 
 export declare class EmscriptenRegisteredClass {
     baseClass: any;
-    "constructor": (...args: any[]) => this;
     constructor_body: any;
     downcast: number;
     getActualType: () => any;

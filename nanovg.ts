@@ -1250,7 +1250,7 @@ export class Context {
   }
 
   delete(): void {
-    nvgDeleteWebGL(this.ctx); delete this.ctx;
+    nvgDeleteWebGL(this.ctx);
     this.gl = null;
   }
 

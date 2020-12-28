@@ -1157,7 +1157,7 @@ export function renderDemo(nvg: NVG.Context, mx: number, my: number, width: numb
 
 // void saveScreenShot(int w, int h, int premult, const char* name)
 export function saveScreenShot(gl: WebGLRenderingContext | null, name: string): void {
-  if (gl) {
+  if (gl && gl.canvas instanceof HTMLCanvasElement) {
     gl.canvas.toBlob((blob: Blob | null): void => {
       const a = document.createElement("a");  
       a.href = URL.createObjectURL(blob);

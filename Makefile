@@ -54,13 +54,13 @@ clean-bind-nanovg:
 	rm -f bind-nanovg.wasm bind-nanovg.wasm.*
 
 %.bc: %.c $(NANOVG_SOURCE_HXX)
-	emcc $(FLAGS) -I $(NANOVG_PATH)/src $< -o $@
+	emcc $(FLAGS) -I $(NANOVG_PATH)/src -c $< -o $@
 
 %.bc: %.cpp $(NANOVG_SOURCE_HXX)
-	emcc $(FLAGS) -I $(NANOVG_PATH)/src $< -o $@
+	emcc $(FLAGS) -I $(NANOVG_PATH)/src -c $< -o $@
 
 bind-nanovg.bc: bind-nanovg.cpp $(NANOVG_SOURCE_HXX)
-	emcc $(FLAGS) -I $(NANOVG_PATH)/src --bind $< -o $@
+	emcc $(FLAGS) -I $(NANOVG_PATH)/src --bind -c $< -o $@
 
 bind-nanovg.js: $(NANOVG_OUTPUT_BC) $(BIND_NANOVG_OUTPUT_BC)
 	emcc $(FLAGS) -I $(NANOVG_PATH)/src --bind $^ -o $@
