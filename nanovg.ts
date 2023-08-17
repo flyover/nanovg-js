@@ -151,10 +151,10 @@ export enum NVGcompositeOperation {
 // };
 // typedef struct NVGcompositeOperationState NVGcompositeOperationState;
 export class NVGcompositeOperationState implements Bind.NVGcompositeOperationState {
-  srcRGB: NVGblendFactor = 0;
-  dstRGB: NVGblendFactor = 0;
-  srcAlpha: NVGblendFactor = 0;
-  dstAlpha: NVGblendFactor = 0;
+  srcRGB: NVGblendFactor = NVGblendFactor.ONE;
+  dstRGB: NVGblendFactor = NVGblendFactor.ZERO;
+  srcAlpha: NVGblendFactor = NVGblendFactor.ONE;
+  dstAlpha: NVGblendFactor = NVGblendFactor.ZERO;
 }
 
 // struct NVGglyphPosition {
@@ -188,6 +188,7 @@ export class NVGtextRow implements Bind.NVGtextRow {
 }
 
 export enum NVGimageFlags {
+  NONE = 0,
   GENERATE_MIPMAPS = 1 << 0,  // Generate mipmaps during creation of the image.
   REPEATX = 1 << 1,           // Repeat image in X direction.
   REPEATY = 1 << 2,           // Repeat image in Y direction.

@@ -66,8 +66,7 @@ const ICON_LOGIN = 0xE740;
 const ICON_TRASH = 0xE729;
 
 // //static float minf(float a, float b) { return a < b ? a : b; }
-// static float maxf(float a, float b) { return a > b ? a : b; }
-function maxf(a: number, b: number): number { return a > b ? a : b; }
+// //static float maxf(float a, float b) { return a > b ? a : b; }
 // //static float absf(float a) { return a >= 0.0 ? a : -a; }
 // static float clampf(float a, float mn, float mx) { return a < mn ? mn : (a > mx ? mx : a); }
 function clampf(a: number, mn: number, mx: number): number { return a < mn ? mn : (a > mx ? mx : a); }
@@ -142,7 +141,7 @@ export function drawWindow(nvg: NVG.Context, title: string, x: number, y: number
   nvg.strokeColor(nvg.RGBA(0, 0, 0, 32));
   nvg.stroke();
 
-  nvg.fontSize(18.0);
+  nvg.fontSize(15.0);
   nvg.fontFace("sans-bold");
   nvg.textAlign(NVG.Align.CENTER | NVG.Align.MIDDLE);
 
@@ -180,7 +179,7 @@ export function drawSearchBox(nvg: NVG.Context, text: string, x: number, y: numb
   nvg.textAlign(NVG.Align.CENTER | NVG.Align.MIDDLE);
   nvg.text(x + h * 0.55, y + h * 0.55, cpToUTF8(ICON_SEARCH), null);
 
-  nvg.fontSize(20.0);
+  nvg.fontSize(17.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 32));
 
@@ -210,7 +209,7 @@ export function drawDropDown(nvg: NVG.Context, text: string, x: number, y: numbe
   nvg.strokeColor(nvg.RGBA(0, 0, 0, 48));
   nvg.stroke();
 
-  nvg.fontSize(20.0);
+  nvg.fontSize(17.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 160));
   nvg.textAlign(NVG.Align.LEFT | NVG.Align.MIDDLE);
@@ -225,7 +224,7 @@ export function drawDropDown(nvg: NVG.Context, text: string, x: number, y: numbe
 
 // void drawLabel(NVGcontext* nvg, const char* text, float x, float y, float w, float h)
 export function drawLabel(nvg: NVG.Context, text: string, x: number, y: number, w: number, h: number): void {
-  nvg.fontSize(18.0);
+  nvg.fontSize(15.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 128));
 
@@ -254,7 +253,7 @@ export function drawEditBox(nvg: NVG.Context, text: string, x: number, y: number
 
   drawEditBoxBase(nvg, x, y, w, h);
 
-  nvg.fontSize(20.0);
+  nvg.fontSize(17.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 64));
   nvg.textAlign(NVG.Align.LEFT | NVG.Align.MIDDLE);
@@ -268,13 +267,13 @@ export function drawEditBoxNum(nvg: NVG.Context, text: string, units: string, x:
 
   const uw = nvg.textBounds(0, 0, units, null, null);
 
-  nvg.fontSize(18.0);
+  nvg.fontSize(15.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 64));
   nvg.textAlign(NVG.Align.RIGHT | NVG.Align.MIDDLE);
   nvg.text(x + w - h * 0.3, y + h * 0.5, units, null);
 
-  nvg.fontSize(20.0);
+  nvg.fontSize(17.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 128));
   nvg.textAlign(NVG.Align.RIGHT | NVG.Align.MIDDLE);
@@ -285,7 +284,7 @@ export function drawEditBoxNum(nvg: NVG.Context, text: string, units: string, x:
 export function drawCheckBox(nvg: NVG.Context, text: string, x: number, y: number, w: number, h: number): void {
   let bg: NVG.Paint;
 
-  nvg.fontSize(18.0);
+  nvg.fontSize(15.0);
   nvg.fontFace("sans");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 160));
 
@@ -298,7 +297,7 @@ export function drawCheckBox(nvg: NVG.Context, text: string, x: number, y: numbe
   nvg.fillPaint(bg);
   nvg.fill();
 
-  nvg.fontSize(40);
+  nvg.fontSize(33);
   nvg.fontFace("icons");
   nvg.fillColor(nvg.RGBA(255, 255, 255, 128));
   nvg.textAlign(NVG.Align.CENTER | NVG.Align.MIDDLE);
@@ -326,7 +325,7 @@ export function drawButton(nvg: NVG.Context, preicon: number, text: string, x: n
   nvg.strokeColor(nvg.RGBA(0, 0, 0, 48));
   nvg.stroke();
 
-  nvg.fontSize(20.0);
+  nvg.fontSize(17.0);
   nvg.fontFace("sans-bold");
   tw = nvg.textBounds(0, 0, text, null, null);
   if (preicon !== 0) {
@@ -344,7 +343,7 @@ export function drawButton(nvg: NVG.Context, preicon: number, text: string, x: n
     nvg.text(x + w * 0.5 - tw * 0.5 - iw * 0.75, y + h * 0.5, cpToUTF8(preicon), null);
   }
 
-  nvg.fontSize(20.0);
+  nvg.fontSize(17.0);
   nvg.fontFace("sans-bold");
   nvg.textAlign(NVG.Align.LEFT | NVG.Align.MIDDLE);
   nvg.fillColor(nvg.RGBA(0, 0, 0, 160));
@@ -846,7 +845,7 @@ export async function loadDemoData(nvg: NVG.Context, data: DemoData): Promise<nu
   for (let i = 0; i < 12; i++) {
     const file = `../nanovg/example/images/image${i + 1}.jpg`;
     // data.images[i] = nvg.createImage(file, 0);
-    data.images[i] = nvg.createImageMem(0, new Uint8Array(await loadArrayBuffer(file)));
+    data.images[i] = nvg.createImageMem(NVG.ImageFlags.NONE, new Uint8Array(await loadArrayBuffer(file)));
     if (data.images[i] === 0) {
       console.log(`Could not load ${file}.`);
       return -1;
@@ -906,12 +905,14 @@ function drawParagraph(nvg: NVG.Context, x: number, y: number, width: number, he
   let caretx: number, px: number;
   const bounds: Float32Array = new Float32Array(4);
   let a: number;
+  const hoverText: string = "Hover your mouse over the text to see calculated caret position.";
   let gx: number = 0, gy: number = 0;
   let gutter: number = 0;
+	const boxText: string = "Testing\nsome multiline\ntext.";
 
   nvg.save();
 
-  nvg.fontSize(18.0);
+  nvg.fontSize(15.0);
   nvg.fontFace("sans");
   nvg.textAlign(NVG.Align.LEFT | NVG.Align.TOP);
   nvg.textMetrics(null, null, lineh);
@@ -928,7 +929,7 @@ function drawParagraph(nvg: NVG.Context, x: number, y: number, width: number, he
 
       nvg.beginPath();
       nvg.fillColor(nvg.RGBA(255, 255, 255, hit ? 64 : 16));
-      nvg.rect(x, y, row.width, lineh[0]);
+      nvg.rect(x + row.minx, y, row.maxx - row.minx, lineh[0]);
       nvg.fill();
 
       nvg.fillColor(nvg.RGBA(255, 255, 255, 255));
@@ -964,7 +965,7 @@ function drawParagraph(nvg: NVG.Context, x: number, y: number, width: number, he
 
   if (gutter) {
     const txt = `${gutter}`;
-    nvg.fontSize(13.0);
+    nvg.fontSize(12.0);
     nvg.textAlign(NVG.Align.RIGHT | NVG.Align.MIDDLE);
 
     nvg.textBounds(gx, gy, txt, null, bounds);
@@ -980,16 +981,16 @@ function drawParagraph(nvg: NVG.Context, x: number, y: number, width: number, he
 
   y += 20.0;
 
-  nvg.fontSize(13.0);
+  nvg.fontSize(11.0);
   nvg.textAlign(NVG.Align.LEFT | NVG.Align.TOP);
   nvg.textLineHeight(1.2);
 
-  nvg.textBoxBounds(x, y, 150, "Hover your mouse over the text to see calculated caret position.", null, bounds);
+  nvg.textBoxBounds(x, y, 150, hoverText, null, bounds);
 
   // Fade the tooltip out when close to it.
-  gx = Math.abs((mx - (bounds[0] + bounds[2]) * 0.5) / (bounds[0] - bounds[2]));
-  gy = Math.abs((my - (bounds[1] + bounds[3]) * 0.5) / (bounds[1] - bounds[3]));
-  a = maxf(gx, gy) - 0.5;
+	gx = clampf(mx, bounds[0], bounds[2]) - mx;
+	gy = clampf(my, bounds[1], bounds[3]) - my;
+	a = Math.sqrt(gx*gx + gy*gy) / 30.0;
   a = clampf(a, 0, 1);
   nvg.globalAlpha(a);
 
@@ -1003,7 +1004,7 @@ function drawParagraph(nvg: NVG.Context, x: number, y: number, width: number, he
   nvg.fill();
 
   nvg.fillColor(nvg.RGBA(0, 0, 0, 220));
-  nvg.textBox(x, y, 150, "Hover your mouse over the text to see calculated caret position.", null);
+  nvg.textBox(x, y, 150, hoverText, null);
 
   nvg.restore();
 }
@@ -1159,6 +1160,7 @@ export function renderDemo(nvg: NVG.Context, mx: number, my: number, width: numb
 export function saveScreenShot(gl: WebGLRenderingContext | null, name: string): void {
   if (gl && gl.canvas instanceof HTMLCanvasElement) {
     gl.canvas.toBlob((blob: Blob | null): void => {
+      if (blob === null) return;
       const a = document.createElement("a");  
       a.href = URL.createObjectURL(blob);
       a.download = name || "untitled.png";

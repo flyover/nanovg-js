@@ -225,35 +225,35 @@ export function renderGraph(nvg: NVG.Context, x: number, y: number, fps: PerfGra
   nvg.fontFace("sans");
 
   if (fps.name[0] !== '\0') {
-    nvg.fontSize(14.0);
+    nvg.fontSize(12.0);
     nvg.textAlign(NVG.Align.LEFT|NVG.Align.TOP);
     nvg.fillColor(nvg.RGBA(240,240,240,192));
-    nvg.text(x+3,y+1, fps.name, null);
+    nvg.text(x+3,y+3, fps.name, null);
   }
 
   if (fps.style === GraphrenderStyle.GRAPH_RENDER_FPS) {
-    nvg.fontSize(18.0);
+    nvg.fontSize(15.0);
     nvg.textAlign(NVG.Align.RIGHT|NVG.Align.TOP);
     nvg.fillColor(nvg.RGBA(240,240,240,255));
     str = `${(1.0 / avg).toFixed(2)} FPS`;
-    nvg.text(x+w-3,y+1, str, null);
+    nvg.text(x+w-3,y+3, str, null);
 
-    nvg.fontSize(15.0);
-    nvg.textAlign(NVG.Align.RIGHT|NVG.Align.BOTTOM);
+    nvg.fontSize(13.0);
+    nvg.textAlign(NVG.Align.RIGHT|NVG.Align.BASELINE);
     nvg.fillColor(nvg.RGBA(240,240,240,160));
     str = `${(avg * 1000).toFixed(2)} ms`;
-    nvg.text(x+w-3,y+h-1, str, null);
+    nvg.text(x+w-3,y+h-3, str, null);
   } else if (fps.style === GraphrenderStyle.GRAPH_RENDER_PERCENT) {
-    nvg.fontSize(18.0);
+    nvg.fontSize(15.0);
     nvg.textAlign(NVG.Align.RIGHT|NVG.Align.TOP);
     nvg.fillColor(nvg.RGBA(240,240,240,255));
     str = `${(avg * 1.0).toFixed(1)} %`;
-    nvg.text(x+w-3,y+1, str, null);
+    nvg.text(x+w-3,y+3, str, null);
   } else {
-    nvg.fontSize(18.0);
+    nvg.fontSize(15.0);
     nvg.textAlign(NVG.Align.RIGHT|NVG.Align.TOP);
     nvg.fillColor(nvg.RGBA(240,240,240,255));
     str = `${(avg * 1000).toFixed(2)} ms`;
-    nvg.text(x+w-3,y+1, str, null);
+    nvg.text(x+w-3,y+3, str, null);
   }
 }
